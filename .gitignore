@@ -1,2 +1,4 @@
 BlogDjango/__pycache__/
 db.sqlite3
+mainapp/__pycache__/
+mainapp/migrations/__pycache__/
