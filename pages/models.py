@@ -12,6 +12,6 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
-class Meta:
-    verbose_name        = "Page"
-    verbose_name_plural = "Pages"
+    class Meta:
+        verbose_name        = "Page"
+        verbose_name_plural = "Pages"
