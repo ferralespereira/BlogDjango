@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .models import Page
+
 
 # Create your views here.
-def page(request):
+def page(request, slug):
+
+    page = Page.objects.get(slug=slug)
+
     return render(request, "pages/page.html", {
-        "title": "Single page",
-        "page": "Hello word from App Pages"
+        "page": page
     })
