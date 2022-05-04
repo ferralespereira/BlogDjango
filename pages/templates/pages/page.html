@@ -6,8 +6,8 @@
 
 {% block content %}
 
-    <h1>{{ page.title }}</h1>
-    <span{{ page.created_at }}></span>
-    <p>{{ page.content }}</p>
+    <h1 class="mb-0">{{ page.title }}</h1>
+    <span class="fw-bold"><small>{{ page.created_at }}</small></span>
+    <p class="mt-2">{{ page.content }}</p>
 
 {% endblock %}
