@@ -24,7 +24,7 @@ class Article(models.Model):
     public = models.BooleanField(verbose_name="Public?")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="created_at")
     user = models.ForeignKey(User, verbose_name="user", on_delete=models.CASCADE)
-    categories = models.ManyToManyField(Category, verbose_name="categories")
+    categories = models.ManyToManyField(Category, verbose_name="categories", blank=True)
     updated_at = models.DateTimeField(auto_now=True, verbose_name="updated_at")
 
     class Meta:
