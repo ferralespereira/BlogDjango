@@ -4,3 +4,5 @@ mainapp/__pycache__/
 mainapp/migrations/__pycache__/
 pages/__pycache__/
 pages/migrations/__pycache__/
+blog/__pycache__/
+blog/migrations/__pycache__/
