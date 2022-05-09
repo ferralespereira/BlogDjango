@@ -30,6 +30,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = "article"
         verbose_name_plural = "articles"
+        ordering = ['-created_at']
 
     
     def __str__(sefl):
