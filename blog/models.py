@@ -20,7 +20,7 @@ class Category(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=150, verbose_name="title")
     content = RichTextField(verbose_name="content")
-    image = models.ImageField(default='null', verbose_name="image")
+    image = models.ImageField(default='null', verbose_name="image", upload_to="articles")
     public = models.BooleanField(verbose_name="Public?")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="created_at")
     user = models.ForeignKey(User, editable=False, verbose_name="user", on_delete=models.CASCADE)

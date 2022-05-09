@@ -20,6 +20,10 @@
             {% for category in article.categories.all %}
                 <a href="#">{{category}}</a></br>
             {% endfor %}
+
+            {% if article.image != "null" %}
+                <img src="{{article.image.url}}" class="img-thumbnail" width="150px"  />
+            {% endif %}
             </p>
         </li>
     {% endfor %}
