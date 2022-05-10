@@ -8,7 +8,7 @@
 
             <p>
             {% for category in article.categories.all %}
-                <a href="#">{{category}}</a></br>
+                <a href="{% url 'category' category.id %}">{{category.name}}</a></br>
             {% endfor %}
 
             {% if article.image != "null" %}
