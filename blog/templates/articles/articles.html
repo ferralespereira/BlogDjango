@@ -1,0 +1,20 @@
+<ul class="col-md-6 p-0" >
+    {% for article in articles %}
+        <li class="list-group-item">
+            
+            <h5>{{ article.title }}</h5>
+            <span class="text-secondary"><small>{{article.user.email}} | {{article.created_at}}</small></span>
+            <span>{{ article.content|safe }}</span>
+
+            <p>
+            {% for category in article.categories.all %}
+                <a href="#">{{category}}</a></br>
+            {% endfor %}
+
+            {% if article.image != "null" %}
+                <img src="{{article.image.url}}" class="img-thumbnail" width="150px"  />
+            {% endif %}
+            </p>
+        </li>
+    {% endfor %}
+    </ul>
