@@ -16,6 +16,11 @@ def category(request, category_id):
 
     category = get_object_or_404(Category, id=category_id)
 
+    # i can use one each of these:
+    # articles = Article.objects.filter(categories=category_id)
+    # articles = Article.objects.filter(categories=category)
+
     return render(request, 'categories/categories.html', {
-        'category': category
+        'category': category,
+        # 'articles': articles
     })
