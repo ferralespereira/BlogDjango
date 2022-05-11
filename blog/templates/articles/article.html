@@ -1,0 +1,23 @@
+{% extends 'layouts/layout.html' %}        
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="mb-0">{{ article.title }}</h1>
+    <span class="text-secondary"><small>{{ article.created_at }}</small></span>
+    <p class="mt-2">{{ article.content|safe }}</p>
+
+    <p>
+        {% for category in article.categories.all %}
+            <a href="{% url 'category' category.id %}">{{category.name}}</a></br>
+        {% endfor %}
+
+        {% if article.image != "null" %}
+            <img src="{{article.image.url}}" class="img-thumbnail" width="150px"  />
+        {% endif %}
+    </p>
+
+{% endblock %}
