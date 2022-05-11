@@ -9,6 +9,7 @@
     <h1>{{ category.name }}</h1>
     <p>{{ category.description }}</p>
 
+    {% comment %} Show Articles from an specific Category {% endcomment %}
     {% include 'articles/articles.html' with articles=category.article_set.all %}
 
 {% endblock %}
