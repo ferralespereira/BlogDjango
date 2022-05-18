@@ -7,13 +7,9 @@
 {% block content %}
     <h1>Register</h1>
 
-    {% if register_form.errors %}
-            <div class="alert alert-danger col-md-4">
-                {{register_form.errors}}
-            </div>
-    {% endif %}
-
-    {{error_messages}}
+        {% comment %} 
+        {{register_form.errors}}
+        {% endcomment %}
 
 
     <div class="col-md-4 p-4 border rounded">
@@ -24,6 +20,13 @@
             <div class="form-floating mb-3">
                 {{field}}
                 <label for="{{field.label}}">{{field.label}}</label>
+
+                {% if field.errors %}
+                <div class="alert alert-danger p-1">
+                    {{field.errors}}
+                </div>
+                {% endif %}
+
             </div>
             {% endfor %}
 
