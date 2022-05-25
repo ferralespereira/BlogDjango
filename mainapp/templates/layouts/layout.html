@@ -44,52 +44,52 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-                    </li>
-
-                    {% if user.email %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Articles</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'articles' %}">All Articles</a></li>
-                            
-                            <li><small><a class="dropdown-item fw-bold mt-2 text-secondary">By Category:</a></small></li>
-                            <hr class="dropdown-divider my-0">
-                            {% for category in categories %}
-                            <li><a class="dropdown-item" href="{% url 'category' category.0 %}">{{category.1}}</a></li>
-                            {% endfor %}
-
-                        </ul>
-                    </li>
-                    
-                    {% for page in pages %}
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <small>
-                                <a class="nav-link active" href="{% url 'page' page.2 %}">{{page.1}}</a>
-                            </small>
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                         </li>
-                    {% endfor %}
-                    
-                    {% else %}
 
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'register' %}">Register</a>
+                        {% if user.email %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Articles</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'articles' %}">All Articles</a></li>
+                                
+                                <li><small><a class="dropdown-item fw-bold mt-2 text-secondary">By Category:</a></small></li>
+                                <hr class="dropdown-divider my-0">
+                                {% for category in categories %}
+                                <li><a class="dropdown-item" href="{% url 'category' category.0 %}">{{category.1}}</a></li>
+                                {% endfor %}
+
+                            </ul>
                         </li>
                         
+                        {% for page in pages %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'login' %}">Login</a>
+                            <small>
+                                <a class="nav-link" href="{% url 'page' page.2 %}">{{page.1}}</a>
+                            </small>
                         </li>
-                    {% endif %}
-                </ul>
+                        {% endfor %}
+                        
+                        {% endif %}
+                    </ul>
+
+                        
+                    {% if user.email %}
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                    <a class="nav-link text-secondary" href="{% url 'logout' %}">Logout</a>
+
+                    {% else %}
+
+                    <a class="nav-link text-secondary" href="{% url 'register' %}">Register</a>
                     
-                {% if user.email %}
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                {% endif %}
+                    <a class="nav-link text-secondary" href="{% url 'login' %}">Login</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>

@@ -53,3 +53,7 @@ def login_page(request):
         'title': 'Login'
 
     })
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
