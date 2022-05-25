@@ -1,0 +1,40 @@
+{% extends 'layouts/layout.html' %}        
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+
+        {% comment %} 
+        {{register_form.errors}}
+        {% endcomment %}
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning col-md-4">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="col-md-4 p-4 border rounded">
+        <form method="post" action="">
+            {% csrf_token %}
+
+            <div class="form-floating mb-3">
+                <input type="text" name="username" class="form-control" placeholder="" required="">
+                <label for="User Name">User Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" placeholder="" required="">
+                <label for="password">Password</label>
+            </div>
+            
+            <input class="btn btn-primary mt-3" type="submit" value="Login" />
+        </form>
+    </div>
+
+{% endblock %}

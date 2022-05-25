@@ -6,13 +6,18 @@
 
 {% block content %}
     <h1>Home content</h1>
+    <hr>
 
     {% if messages %}
         {% for message in messages %}
-        <div class="alert alert-success col-3">
+        <div class="alert alert-success col-md-3">
             {{message}}
         </div>
         {% endfor %}
     {% endif %}
-    
+
+    {% if user.email %}
+        <h2>Welcome, {{user.first_name}}</h2>
+    {% endif %}
+
 {% endblock %}
