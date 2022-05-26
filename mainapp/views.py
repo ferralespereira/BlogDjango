@@ -17,42 +17,54 @@ def about(request):
 
 def register_page(request):
     
-    register_form = RegisterForm()
-
-    if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
-    
-    if register_form.is_valid():
-        register_form.save()
-        messages.success(request, 'You are registered.')
-
+    # if user is authenticated i'll send him to home 
+    if request.user.is_authenticated:
         return redirect('index')
+    
+    else:
 
-    return render(request, 'users/register.html', {
-        'title': 'Register',
-        'register_form': register_form
-    })
+        register_form = RegisterForm()
+
+        if request.method == 'POST':
+            register_form = RegisterForm(request.POST)
+        
+        if register_form.is_valid():
+            register_form.save()
+            messages.success(request, 'You are registered.')
+
+            return redirect('index')
+
+        return render(request, 'users/register.html', {
+            'title': 'Register',
+            'register_form': register_form
+        })
 
 
 def login_page(request):
 
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    # if user is authenticated i'll send him to home 
+    if request.user.is_authenticated:
+        return redirect('index')
+    
+    else:
 
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-             messages.warning(request, 'Login Incorrect')
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+            else:
+                messages.warning(request, 'Login Incorrect')
 
 
-    return render(request, 'users/login.html', {
-        'title': 'Login'
+        return render(request, 'users/login.html', {
+            'title': 'Login'
 
-    })
+        })
 
 def logout_user(request):
     logout(request)
